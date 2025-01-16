@@ -1,0 +1,26 @@
+{
+  "manifest_version": 3,
+  "name": "Advanced Clarify Box Blocker",
+  "version": "1.1",
+  "description": "Blocks the clarify-box element from loading or appearing on the page.",
+  "host_permissions": ["https://www.youtube.com/*"],
+  "permissions": ["declarativeNetRequest", "scripting"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "clarify-box-rules",
+        "enabled": true,
+        "path": "rules.json"
+      }
+    ]
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://www.youtube.com/*"],
+      "js": ["content.js"]
+    }
+  ]
+}
